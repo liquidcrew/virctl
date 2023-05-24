@@ -1,0 +1,17 @@
+#cloud-config
+chpasswd:
+  expire: false
+ssh_pwauth: true
+users:
+  - default
+  - name: tux
+    plain_text_passwd: P4ssW0rd..
+    lock_passwd: false
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    groups:
+      - sudo
+    shell: /bin/bash
+    homedir: /home/tux
+    ssh_authorized_keys: ''
+package_update: false
+package_upgrade: false

@@ -108,7 +108,7 @@ You can install additional software using the package manager provided by the op
 
 ### Network configuration
 
-Network configurations, such as IP address, gateway, and DNS servers, among others, are defined in the [cloud-init/network-config.yaml](cloud-init/network-config.yaml) file. You can refer to [this example](https://cloudinit.readthedocs.io/en/latest/reference/network-config-format-v2.html#examples) or read the [network-config documentation](https://cloudinit.readthedocs.io/en/latest/reference/network-config.html) to learn more.
+Network configurations, such as IP address, gateway, and DNS servers, among others, are defined in the [cloud-init/network-config.yaml](cloud-init/network-config.yaml) file. The value of the `macaddress` field is automatically set (Using the value of the `mac_addr` field of [vm.yaml](vm.yaml)) when the virtual machine is deployed and it's defined as an empty string when the virtual machine is undeployed. You can refer to [this example](https://cloudinit.readthedocs.io/en/latest/reference/network-config-format-v2.html#examples) or read the [network-config documentation](https://cloudinit.readthedocs.io/en/latest/reference/network-config.html) to learn more.
 
 ### Hostname
 
@@ -124,16 +124,14 @@ Documentation has [more examples](https://cloudinit.readthedocs.io/en/latest/ref
 
 ### Cloud config syntax validation
 
-All the files located within the [cloud-init](cloud-init) directory are files that will be used by the `cloud-init` process running on the virtual machine the first time it boots, during the deployment process. These files must adhere to the `cloud-config` syntax, otherwise the virtual machine configuration will fail.
-
-You don't need to deploy a new virtual machine every time you want to validate one of these files. The `cloud-init` program allows you to check the syntax correctness and provides additional information in case of errors.
+You don't need to deploy a new virtual machine every time you want to validate configuration files based on `cloud-config` syntax, in this case, the [cloud-init/user-data.yaml](cloud-init/user-data.yaml) file. The `cloud-init` program allows you to check the syntax correctness and provides additional information in case of errors.
 
 If you want to use `cloud-init` to validate the files, you will need to install it according to the documentation provided by your Linux-based operating system. I haven't included it in the [Requirements](#Requirements) section because `cloud-init` is not strictly necessary for the workspace to function.
 
 Run the following command to validate `cloud-config` formatted files:
 
 ```
-cloud-init schema --config-file file.yaml
+cloud-init schema --config-file <file-name>
 ```
 
 ## 🔌 Compatibility

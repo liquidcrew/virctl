@@ -24,6 +24,8 @@ You can think of this workspace as a framework that includes business logic and 
 
 - [Libvirt](https://libvirt.org/): Toolkit to manage virtualization platforms.
 
+- [yq](https://github.com/kislyuk/yq): Implementation of yq written by Andrey Kislyuk.
+
 ## 🚀 Quick start
 
 > 💡 This workspace is preconfigured so you can use it right now.
@@ -145,3 +147,5 @@ This workspace has been tested with the following images:
 - [Debian GNU/Linux 11 Bullseye Generic AMD64](https://cloud.debian.org/images/cloud/bullseye/latest/debian-11-generic-amd64.qcow2)
 
 - [Ubuntu Server 22.04.1 LTS (Jammy Jellyfish) CloudImg AMD64](https://cloud-images.ubuntu.com/jammy/current/jammy-server-cloudimg-amd64-disk-kvm.img)
+
+- [Arch Linux 20230627.160762 CloudImg AMD64](https://gitlab.archlinux.org/archlinux/arch-boxes/-/jobs/160762/artifacts/raw/output/Arch-Linux-x86_64-cloudimg-20230627.160762.qcow2)

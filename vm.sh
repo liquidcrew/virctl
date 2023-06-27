@@ -98,7 +98,10 @@ function is_vm_up {
 
 # Prints VM's description.
 function desc_vm {
-cat <<EOF
+    vnc_addr=$(virsh vncdisplay "$name")
+    vnc_addr=${vnc_addr:="auto"}
+
+    cat <<EOF
   - Name:       "$name"
   - OS Type:    "$os"
   - CPU(s):     "$cpu"
@@ -106,6 +109,7 @@ cat <<EOF
   - Vdisk size: "$vd_gb GB"
   - Hostname:   "$name"
   - IP addr:    "$addr"
+  - VNC addr:   "$vnc_addr"
 
 EOF
 }
@@ -257,7 +261,7 @@ function vm_create {
         --cpu host \
         --vcpus $cpu  \
         --memory $mem_mb \
-        --graphics none \
+	--graphics vnc,listen=0.0.0.0 \
         --os-variant "$os" \
         --disk "$vd_dst",format=qcow2,bus=virtio,size="$vd_gb" \
         --network bridge="$bridge",model=virtio,mac="$mac_addr" \

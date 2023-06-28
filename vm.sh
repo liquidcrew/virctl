@@ -261,7 +261,7 @@ function vm_create {
         --cpu host \
         --vcpus $cpu  \
         --memory $mem_mb \
-	--graphics vnc,listen=0.0.0.0 \
+        --graphics vnc,listen=0.0.0.0 \
         --os-variant "$os" \
         --disk "$vd_dst",format=qcow2,bus=virtio,size="$vd_gb" \
         --network bridge="$bridge",model=virtio,mac="$mac_addr" \
@@ -291,8 +291,9 @@ function deploy {
     desc_vm
     ! "$force" && confirm
     vdisk_tpl_get; vdisk_vm_create; ssh_keypair_create; vm_create
-    wait_cloud_init \
-    && echo -e "$(cat <<EOF
+    wait_cloud_init &&\
+    virsh snapshot-create "$name" &&\
+    echo -e "$(cat <<EOF
 
 VM "$name" deployed successfully
 To open the virtual serial console: ${c_bold}$0 shell-vm${c_def}

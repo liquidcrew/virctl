@@ -261,7 +261,7 @@ function vm_create {
         --cpu host \
         --vcpus $cpu  \
         --memory $mem_mb \
-        --graphics vnc,listen=0.0.0.0 \
+        --graphics none \
         --os-variant "$os" \
         --disk "$vd_dst",format=qcow2,bus=virtio,size="$vd_gb" \
         --network bridge="$bridge",model=virtio,mac="$mac_addr" \

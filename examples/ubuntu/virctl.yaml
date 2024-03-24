@@ -1,0 +1,8 @@
+name: ubuntu-22.04
+os: ubuntu22.04
+cpu: 1
+mem_mb: 1024
+vd_gb: 8
+vd_src: 'https://cloud-images.ubuntu.com/jammy/current/jammy-server-cloudimg-amd64-disk-kvm.img'
+bridge: virbr0
+mac_addr: ca:fe:ca:fe:ca:fe

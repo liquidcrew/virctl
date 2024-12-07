@@ -1,0 +1,8 @@
+name: debian-11
+os: debian11
+cpu: 1
+mem_mb: 512
+vd_gb: 4
+vd_src: 'https://cloud.debian.org/images/cloud/bullseye/latest/debian-11-generic-amd64.qcow2'
+bridge: virbr0
+mac_addr: ca:fe:ca:fe:ca:fe

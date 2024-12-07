@@ -1,4 +1,4 @@
-name: debian-vm
+name: debian-11
 os: debian11
 cpu: 1
 mem_mb: 512

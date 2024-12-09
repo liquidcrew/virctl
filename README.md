@@ -30,10 +30,16 @@ You can think of *Virctl* as a framework that includes business logic and predef
 
 Follow the instructions for your *GNU/Linux* distribution to install the dependencies.
 
-#### ArchLinux | Manjaro:
+#### ArchLinux | EndeavourOS | Manjaro:
 
 ```shell
 sudo pacman -Syu bridge-utils qemu-base libguestfs libvirt virt-install yq
+sudo setfacl -m u:libvirt-qemu:rx ~
+sudo usermod -a -G libvirt $(whoami)
+sudo bash -c 'export LIBVIRT_DEFAULT_URI="qemu:///system" > ~/.zhsenv'
+source ~/.zhsenv
+virsh net-autostart default
+virsh net-start default
 ```
 
 ## 🚀 Quick start
